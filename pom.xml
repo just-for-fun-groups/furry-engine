@@ -16,9 +16,11 @@
 
     <properties>
         <java.version>1.8</java.version>
+
         <hutool.version>5.0.3</hutool.version>
         <netty.version>4.1.42.Final</netty.version>
         <fastjson.version>1.2.62</fastjson.version>
+        <mybatis-spring-boot.version>2.1.1</mybatis-spring-boot.version>
     </properties>
 
     <dependencies>
@@ -43,31 +45,35 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
         </dependency>
+
         <!--开源工具类集合-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.47</version>
-        </dependency>
-
+        <!--处理json工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot.version}</version>
+        </dependency>
 
     </dependencies>
 
