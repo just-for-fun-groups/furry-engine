@@ -1,15 +1,16 @@
 package com.windrises.netty.nio;
 
-import java.io.FileInputStream;
+import java.io.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
 
 /**
  * Channel不传输数据,需配合缓冲区使用
@@ -22,6 +23,8 @@ import java.nio.file.StandardOpenOption;
  * 通道之间的数据传输
  * transferForm()
  * transferTo()
+ * <p>
+ * 分散(Scatter)和聚集(Gather)
  *
  * @author liuhaozhen
  * @version Revision 1.0.0
@@ -29,7 +32,26 @@ import java.nio.file.StandardOpenOption;
  */
 public class TestChannel {
     public static void main(String[] args) throws Exception {
-        method3();
+        method5();
+    }
+
+
+    private static void method5() throws FileNotFoundException {
+        SortedMap<String, Charset> map = Charset.availableCharsets();
+        Set<Map.Entry<String, Charset>> entries = map.entrySet();
+        for (Map.Entry<String, Charset> entry : entries) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+    }
+
+    private static void method4() throws FileNotFoundException {
+        RandomAccessFile randomAccessFile = new RandomAccessFile("1.txt", "rw");
+        //获取通道
+        FileChannel channel = randomAccessFile.getChannel();
+        //分配缓冲区大小
+        ByteBuffer buffer1 = ByteBuffer.allocate(100);
+        ByteBuffer buffer2 = ByteBuffer.allocate(1024);
+
     }
 
     /**
